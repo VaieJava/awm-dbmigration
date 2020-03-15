@@ -1,0 +1,13 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/master_changelog.xml
+  datasource:
+    name: db
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: vaielx571859
+      url: jdbc:mysql://127.0.0.1:3306/awm_db?useUnicode=true&characterEncoding=utf8
+#      url: jdbc:mysql://39.107.226.36:3306/awm_db?useUnicode=true&characterEncoding=utf8
