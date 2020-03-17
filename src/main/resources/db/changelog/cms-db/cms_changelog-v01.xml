@@ -19,8 +19,22 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="execute init_data.sql" author="VAIE">
-        <sqlFile path="/db/changelog/cms-db/init_data.sql"/>
+    <changeSet author="VAIE" id="create table test_tab">
+        <createTable  tableName="test_tab">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
     </changeSet>
+
+    <!--<changeSet id="execute init_data.sql" author="VAIE">-->
+        <!--<sqlFile path="/db/changelog/cms-db/init_data.sql"/>-->
+    <!--</changeSet>-->
 
 </databaseChangeLog>
