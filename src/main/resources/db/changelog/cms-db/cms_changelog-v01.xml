@@ -26,7 +26,7 @@
             <column name="deleted" type="bit(1)" remarks="删除标记"/>
             <column name="create_date" type="DATETIME" remarks="创建日期"/>
             <column name="update_date" type="DATETIME" remarks="更新日期"/>
-            <column name="create_by" type="BIGINT" remarks="创建日期"/>
+            <column name="create_by" type="BIGINT" remarks="创建人"/>
             <column name="update_by" type="BIGINT" remarks="更新人"/>
         </createTable>
     </changeSet>
@@ -51,7 +51,35 @@
 
             <column name="create_date" type="DATETIME" remarks="创建日期"/>
             <column name="update_date" type="DATETIME" remarks="更新日期"/>
-            <column name="create_by" type="BIGINT" remarks="创建日期"/>
+            <column name="create_by" type="BIGINT" remarks="创建人"/>
+            <column name="update_by" type="BIGINT" remarks="更新人"/>
+        </createTable>
+    </changeSet>
+
+    <!--举报表-->
+    <changeSet author="VAIE" id="create table impeach">
+        <createTable  tableName="impeach">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="type_id" type="BIGINT" remarks="对应的作品或收藏的id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT" remarks="用户id"/>
+            <column name="status" type="int" remarks="举报类型"/>
+            <column name="audited" type="bit(1)" remarks="审核状态"/>
+            <column name="remarks" type="varchar(200)" remarks="备注"/>
+
+            <column name="create_date" type="DATETIME" remarks="创建日期"/>
+            <column name="update_date" type="DATETIME" remarks="更新日期"/>
+            <column name="create_by" type="BIGINT" remarks="创建人"/>
             <column name="update_by" type="BIGINT" remarks="更新人"/>
         </createTable>
     </changeSet>
