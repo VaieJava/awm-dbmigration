@@ -32,8 +32,8 @@
     </changeSet>
 
     <!--收藏表-->
-    <changeSet author="VAIE" id="create table collect">
-        <createTable  tableName="collect">
+    <changeSet author="VAIE" id="create table enshrine">
+        <createTable  tableName="enshrine">
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -49,6 +49,7 @@
             </column>
             <column name="customer_id" type="BIGINT" remarks="用户id"/>
 
+            <column name="deleted" type="bit(1)" remarks="删除标记"/>
             <column name="create_date" type="DATETIME" remarks="创建日期"/>
             <column name="update_date" type="DATETIME" remarks="更新日期"/>
             <column name="create_by" type="BIGINT" remarks="创建人"/>
@@ -77,12 +78,46 @@
             <column name="audited" type="bit(1)" remarks="审核状态"/>
             <column name="remarks" type="varchar(200)" remarks="备注"/>
 
+            <column name="deleted" type="bit(1)" remarks="删除标记"/>
             <column name="create_date" type="DATETIME" remarks="创建日期"/>
             <column name="update_date" type="DATETIME" remarks="更新日期"/>
             <column name="create_by" type="BIGINT" remarks="创建人"/>
             <column name="update_by" type="BIGINT" remarks="更新人"/>
         </createTable>
     </changeSet>
+
+    <!--广场表-->
+    <changeSet author="VAIE" id="create table dynamic_circle">
+        <createTable  tableName="dynamic_circle">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="content" type="varchar(2048)" remarks="内容">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT" remarks="用户id"/>
+            <column name="address" type="BIGINT" remarks="发表地址"/>
+            <column name="audited" type="bit(1)" remarks="审核状态"/>
+            <column name="anonymity" type="bit(1)" remarks="是否匿名"/>
+            <column name="status" type="bit(1)" remarks="类型 0:草稿"/>
+            <column name="remarks" type="varchar(200)" remarks="备注"/>
+
+            <column name="deleted" type="bit(1)" remarks="删除标记"/>
+            <column name="create_date" type="DATETIME" remarks="创建日期"/>
+            <column name="update_date" type="DATETIME" remarks="更新日期"/>
+            <column name="create_by" type="BIGINT" remarks="创建人"/>
+            <column name="update_by" type="BIGINT" remarks="更新人"/>
+        </createTable>
+    </changeSet>
+
+
 
 
 </databaseChangeLog>
