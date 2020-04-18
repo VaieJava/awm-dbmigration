@@ -3,7 +3,90 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
-
-
-
+    <!-- 约会信息表 -->
+<changeSet id="create table marriage_dateInfo" author="HY">
+    <createTable tableName="marriage_dateInfo">
+        <column name="id" type="INT" remarks="主键" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="ownerId" type="INT" remarks="发布用户id">
+            <constraints nullable="false"/>
+        </column>
+        <column name="title" type="varchar(32)" remarks="标题">
+            <constraints nullable="false"/>
+        </column>
+        <column name="faceTime" type="datetime" remarks="约会时间">
+            <constraints nullable="false"/>
+        </column>
+        <column name="rendezvous" type="varchar(32)" remarks="约会地点">
+            <constraints nullable="false"/>
+        </column>
+        <column name="expcNum" type="INT" remarks="希望人数">
+            <constraints nullable="true"/>
+        </column>
+        <column name="sexRestriction" type="INT" remarks="限制性别 0:不限1:男2:女">
+            <constraints nullable="true"/>
+        </column>
+        <column name="content" type="varchar(1024)" remarks="内容">
+            <constraints nullable="false"/>
+        </column>
+        <column name="contactInfo" type="varchar(255)" remarks="联系方式">
+            <constraints nullable="true"/>
+        </column>
+    </createTable>
+</changeSet>
+    <!-- 报名表 -->
+<changeSet id="create table marriage_apply" author="HY">
+    <createTable tableName="marriage_apply">
+        <column name="id" type="INT" remarks="主键" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="dateId" type="INT" remarks="外键(约会信息id)">
+            <constraints foreignKeyName="dateId" nullable="false"/>
+        </column>
+        <column name="phone" type="varchar(32)" remarks="联系电话">
+            <constraints nullable="false"/>
+        </column>
+        <column name="sex" type="INT" remarks="性别1:男,2:女">
+            <constraints nullable="true"/>
+        </column>
+        <column name="companionNum" type="varchar(32)" remarks="同伴人数格式为:(男伴人数,女伴人数)">
+            <constraints nullable="true"/>
+        </column>
+        <column name="companionList" type="varchar(32)" remarks="同伴名单">
+            <constraints nullable="true"/>
+        </column>
+        <column name="remark" type="varchar(1024)" remarks="备注">
+            <constraints nullable="true"/>
+        </column>
+    </createTable>
+</changeSet>
+    <!-- 话题表 -->
+<changeSet id="create table marriage_topic" author="HY">
+    <createTable tableName="marriage_topic">
+        <column name="id" type="INT" remarks="主键" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="moduleId" type="INT" remarks="所属模块id">
+            <constraints nullable="false"/>
+        </column>
+        <column name="topicName" type="varchar(255)" remarks="话题名称">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+</changeSet>
+    <!-- 举报信息表 -->
+    <changeSet id="create table marriage_reportInfo" author="HY">
+        <createTable tableName="marriage_reportInfo">
+            <column name="id" type="INT" remarks="主键" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="reportType" type="INT" remarks="举报类型编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reportName" type="varchar(255)" remarks="举报类型名称">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
